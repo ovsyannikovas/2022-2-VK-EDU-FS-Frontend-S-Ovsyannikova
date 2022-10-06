@@ -15,7 +15,7 @@
 export default function convertBytesToHuman(bytes) {
     if (!(typeof bytes == "number" && bytes >= 0))
         return false
-    let sizes = ['B', 'KB', 'MB', 'GB', 'TB']
+    let sizes = ['B', 'KB', 'MB', 'GB']
     let num = bytes
     let i = 0
     let remain
