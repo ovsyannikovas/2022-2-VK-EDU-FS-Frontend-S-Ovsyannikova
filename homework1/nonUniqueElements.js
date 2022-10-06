@@ -27,7 +27,6 @@ nonUniqueElements([10, 9, 10, 10, 9, 8]) == [10, 9, 10, 10, 9]
 export default function nonUniqueElements(data) {
     let resArr = []
     for (let i = 0; i < data.length; i++) {
-        // если data[i] есть в след слайсе
         if ((data.slice(0, i) + data.slice(i + 1,)).includes(data[i])) {
             resArr.push(data[i])
         }
