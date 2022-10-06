@@ -23,7 +23,7 @@ export default function correctSentence(text) {
         string = string.charAt(0).toUpperCase() + string.slice(1)
     if (string.slice(-1) !== '.')
         string += '.'
-    return string;
+    return string
 }
 
 
