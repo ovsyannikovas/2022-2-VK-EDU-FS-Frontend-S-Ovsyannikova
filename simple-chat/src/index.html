@@ -9,11 +9,9 @@
 </head>
 <body>
 <header class="site-header">
-    <div class="arrow">
-        <a href="#" onclick="go_to_chat_list()" class="logo">
-            <i class="material-icons icon">arrow_back</i>
-        </a>
-    </div>
+    <a href="#" class="logo arrow">
+        <i class="material-icons icon">arrow_back</i>
+    </a>
     <a href="#">
         <div class="user-info">
             <i class="material-icons avatar">account_circle</i>
@@ -64,6 +62,10 @@
     const form = document.querySelector('form')
     const input = document.querySelector('.form-input')
     const message_list = document.querySelector('.message-list')
+    const arrow = document.querySelector('.arrow')
+    arrow.onclick = () => {
+        document.location.assign("chat_list.html")
+    }
     message_list.scrollTo(0, message_list.scrollHeight)
     // message_list.scrollTop = message_list.scrollHeight
 
@@ -87,6 +89,7 @@
 
     form.addEventListener('submit', handleSubmit)
     form.addEventListener('keypress', handleKeyPress)
+    // arrow.addEventListener('back', handleBackPress)
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -121,6 +124,7 @@
     function go_to_chat_list() {
         document.location.assign("chat_list.html")
     }
+
 </script>
 </body>
 </html>
