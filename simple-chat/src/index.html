@@ -9,7 +9,7 @@
 </head>
 <body>
 <header class="site-header">
-    <a href="#" class="logo arrow">
+    <a href="chat_list.html" class="logo arrow">
         <i class="material-icons icon">arrow_back</i>
     </a>
     <a href="#">
@@ -40,91 +40,5 @@
         </a>
     </div>
 </form>
-<script>
-    chat = [
-        {
-            "name": "Дженнифер",
-            "time": "10:40",
-            "content": "Я тут кое-что нарисовала. Напиши, как освободишься."
-        },
-        {
-            "name": "Мое имя",
-            "time": "10:50",
-            "content": "Хорошо. Освобожусь где-то через час."
-        },
-        {
-            "name": "Дженнифер",
-            "time": "10:55",
-            "content": "Жду!"
-        },
-    ]
-    const userName = "Мое имя"
-    const form = document.querySelector('form')
-    const input = document.querySelector('.form-input')
-    const message_list = document.querySelector('.message-list')
-    const arrow = document.querySelector('.arrow')
-    arrow.onclick = () => {
-        document.location.assign("chat_list.html")
-    }
-    message_list.scrollTo(0, message_list.scrollHeight)
-    // message_list.scrollTop = message_list.scrollHeight
-
-    if (!localStorage.getItem("chat")) {
-        localStorage.setItem("chat", JSON.stringify(chat))
-    }
-
-    const chatHistory = JSON.parse(localStorage.getItem("chat"))
-    restoreHistory(chatHistory)
-
-    function restoreHistory(messages) {
-        messages.forEach(function (message) {
-            let class_name = message.name === userName ? "my-message" : ""
-            const templateDiv =
-                "<div class='message-bubble " + class_name + "'>" + "<div class='message'>" +
-                "<p>" + message.content + "</p>" + "<time>" +
-                message.time + "</time>" + "</div>" + "</div>"
-            message_list.innerHTML += templateDiv
-        })
-    }
-
-    form.addEventListener('submit', handleSubmit)
-    form.addEventListener('keypress', handleKeyPress)
-    // arrow.addEventListener('back', handleBackPress)
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        if (input.value === "")
-            return
-
-        const message = {
-            name: userName,
-            time: new Date().toLocaleTimeString().slice(0, -3),
-            content: input.value,
-        }
-        chatHistory.push(message)
-        document.querySelector('.form-input').value = ""
-
-        localStorage.setItem("chat", JSON.stringify(chatHistory))
-        let localData = JSON.parse(localStorage.getItem("chat"))
-        let last = localData.length - 1
-        const templateDiv =
-            "<div class='message-bubble my-message'>" + "<div class='message'>" +
-            "<p>" + localData[last].content + "</p>" + "<time>" +
-            localData[last].time + "</time>" + "</div>" + "</div>"
-        message_list.innerHTML += templateDiv
-        message_list.scrollTop = message_list.scrollHeight
-    }
-
-    function handleKeyPress(event) {
-        if (event.keyCode === 13) {
-            form.dispatchEvent(new Event('submit'));
-        }
-    }
-
-    function go_to_chat_list() {
-        document.location.assign("chat_list.html")
-    }
-
-</script>
 </body>
 </html>
