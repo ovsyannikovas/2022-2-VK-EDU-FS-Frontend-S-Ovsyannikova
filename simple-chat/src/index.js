@@ -41,7 +41,7 @@ main()
 
 function main() {
     let pathname = document.location.pathname
-    let userName = "Сара"
+    let userName = "Дженнифер"
     if (pathname === '/chat_list.html') {
         const dialogue_list = document.querySelector(".messages")
         restoreDialogues(dialogue_list)
@@ -51,7 +51,7 @@ function main() {
                 return
             userName = event.target.querySelector(".dialogue-name").textContent
         })
-    } else if (pathname === '/index.html') {
+    } else if (pathname === '/index.html' || pathname === '/') {
         chat_page(userName)
     }
 }
@@ -95,12 +95,17 @@ function chat_page(name) {
         localStorage.setItem("chats", JSON.stringify(chatHistory))
         let localData = JSON.parse(localStorage.getItem("chats"))[name]
         let last = localData.length - 1
-        const templateDiv =
-            "<div class='message-bubble my-message'>" + "<div class='message'>" +
-            "<p>" + localData[last].content + "</p>" + "<time>" +
-            localData[last].time + "</time>" + "</div>" + "</div>"
+        const templateDiv =`
+            <div class='message-bubble my-message'>
+                <div class='message'>
+                     <p>${localData[last].content}</p>
+                      <div class="info">
+                         <time>${localData[last].time}</time>
+                        <i class="material-icons">done_all</i>
+                     </div>
+                 </div>
+            </div>`
         message_list.innerHTML += templateDiv
-        message_list.scrollTop = message_list.scrollHeight
     }
 
     function handleKeyPress(event) {
@@ -113,11 +118,15 @@ function chat_page(name) {
 function restoreHistory(messages, message_list, myName) {
     messages.forEach(function (message) {
         let class_name = message.name === myName ? "my-message" : ""
+        let check = message.name === myName ? "done_all" : ""
         const templateDiv =`
             <div class='message-bubble ${class_name}'>
                 <div class='message'>
                      <p>${message.content}</p>
-                     <time>${message.time}</time>
+                     <div class="info">
+                         <time>${message.time}</time>
+                        <i class="material-icons">${check}</i>
+                     </div>
                  </div>
             </div>`
         message_list.innerHTML += templateDiv

@@ -202,12 +202,15 @@ header .material-icons {
 }
 
 .message time {
-    position: absolute;
     color: #666666;
-    justify-content: end;
-    right: .5em;
-    bottom: .1em;
     font-size: 60%;
+    margin-right: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
 }
 
 .messenger-label {
