@@ -113,10 +113,13 @@ function chat_page(name) {
 function restoreHistory(messages, message_list, myName) {
     messages.forEach(function (message) {
         let class_name = message.name === myName ? "my-message" : ""
-        const templateDiv =
-            "<div class='message-bubble " + class_name + "'>" + "<div class='message'>" +
-            "<p>" + message.content + "</p>" + "<time>" +
-            message.time + "</time>" + "</div>" + "</div>"
+        const templateDiv =`
+            <div class='message-bubble ${class_name}'>
+                <div class='message'>
+                     <p>${message.content}</p>
+                     <time>${message.time}</time>
+                 </div>
+            </div>`
         message_list.innerHTML += templateDiv
     })
 }
