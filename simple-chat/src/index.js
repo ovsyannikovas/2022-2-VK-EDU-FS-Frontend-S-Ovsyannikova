@@ -41,17 +41,14 @@ main()
 
 function main() {
     let pathname = document.location.pathname
-    let userName = "Дженнифер"
-    if (pathname === '/chat_list.html') {
+    let filename = pathname.split('/').slice(-1)[0]
+    if (filename === 'chat_list.html') {
         const dialogue_list = document.querySelector(".messages")
         restoreDialogues(dialogue_list)
-        dialogue_list.addEventListener('click', (event) => {
-            const isDialogue = event.target.getAttribute("class") === "dialogue-text"
-            if (!isDialogue)
-                return
-            userName = event.target.querySelector(".dialogue-name").textContent
-        })
-    } else if (pathname === '/index.html' || pathname === '/') {
+    } else if (filename === 'index.html' || filename === '') {
+        const myUrl = new URL(document.location.href);
+        let userName = myUrl.searchParams.get('name');
+        userName = userName ? userName : "Дженнифер"
         chat_page(userName)
     }
 }
@@ -143,7 +140,7 @@ function restoreDialogues(dialogue_list) {
 
     for (let key in chatHistory) {
         const templateDiv = `
-                <a href="index.html" class="dialogue">
+                <a href="index.html?name=${key}" class="dialogue">
                     <i class="material-icons">account_circle</i>
                     <div class="dialogue-text">
                         <div class="dialogue-user-text">
