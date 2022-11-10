@@ -39,18 +39,18 @@ const chats = {
 
 function DialogueItem(props) {
     const value = props.value
-    const key = props.key
+    const name = props.name
 
     return (
         <a href="index.html?name=${key}" className="dialogue">
             <i className="material-icons">account_circle</i>
             <div className="dialogue-text">
                 <div className="dialogue-user-text">
-                    <p className="dialogue-name">${key}</p>
-                    <p className="dialogue-message">${value.slice(-1)[0]["content"]}</p>
+                    <p className="dialogue-name">{name}</p>
+                    <p className="dialogue-message">{value.slice(-1)[0]["content"]}</p>
                 </div>
                 <div className="dialogue-nums">
-                    <p className="dialogue-time">${value.slice(-1)[0]["time"]}</p>
+                    <p className="dialogue-time">{value.slice(-1)[0]["time"]}</p>
                     <i className="material-icons">done_all</i>
                     {/*<p class="dialogue-counter">99</p>*/}
                 </div>
@@ -71,7 +71,7 @@ function restoreDialogues() {
         <>
             {Object.keys(chatHistory).map((key) =>
                 <DialogueItem
-                    key={key}
+                    name={key}
                     value={chatHistory[key]}
                 />
             )}
