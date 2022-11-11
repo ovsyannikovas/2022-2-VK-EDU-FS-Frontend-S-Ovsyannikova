@@ -1,48 +1,12 @@
 import React from 'react';
-
-const chats = {
-    'Дженнифер': [
-        {
-            "name": "Дженнифер",
-            "time": "10:40",
-            "content": "Я тут кое-что нарисовала. Напиши, как освободишься."
-        },
-        {
-            "name": "Мое имя",
-            "time": "10:50",
-            "content": "Хорошо. Освобожусь где-то через час."
-        },
-        {
-            "name": "Дженнифер",
-            "time": "10:55",
-            "content": "Жду!"
-        },
-    ],
-    'Сара': [
-        {
-            "name": "Сара",
-            "time": "10:39",
-            "content": "Привет. Можешь мне немного помочь?"
-        },
-        {
-            "name": "Мое имя",
-            "time": "10:40",
-            "content": "Да, конечно. Что такое?"
-        },
-        {
-            "name": "Сара",
-            "time": "10:45",
-            "content": "Рассказываю"
-        },
-    ]
-}
+import {chats} from './chat_list'
 
 function DialogueItem(props) {
     const value = props.value
     const name = props.name
 
     return (
-        <a href="index.html?name=${key}" className="dialogue">
+        <a href="#" onClick={() => props.onClick('chat', name)} className="dialogue">
             <i className="material-icons">account_circle</i>
             <div className="dialogue-text">
                 <div className="dialogue-user-text">
@@ -59,20 +23,17 @@ function DialogueItem(props) {
     )
 }
 
-function restoreDialogues() {
-    if (!localStorage.getItem("chats")) {
-        localStorage.setItem("chats", JSON.stringify(chats))
-    }
-
-    // const chatHistory = JSON.parse(localStorage.getItem("chats"))
-    const chatHistory = chats
+function restoreDialogues(props) {
+    const chatHistory = JSON.parse(localStorage.getItem("chats"))
 
     return (
         <>
             {Object.keys(chatHistory).map((key) =>
                 <DialogueItem
+                    key = {key}
                     name={key}
                     value={chatHistory[key]}
+                    onClick={props.onClick}
                 />
             )}
         </>
@@ -95,7 +56,7 @@ function getHeader() {
     )
 }
 
-function getBody() {
+function getBody(props) {
     return (
         <div>
             <a href="#">
@@ -104,20 +65,19 @@ function getBody() {
                 </div>
             </a>
             <div className="message-list messages">
-                {restoreDialogues()}
+                {restoreDialogues(props)}
             </div>
         </div>
     )
 }
 
-export function chatList() {
+export default function ChatList(props) {
+    if (!localStorage.getItem("chats")) {
+        localStorage.setItem("chats", JSON.stringify(chats))
+    }
+
     return <>
         {getHeader()}
-        {getBody()}
+        {getBody(props)}
     </>
-
-    // рабочий localstorage
-    // добавить иконки
-    // вынести переменную chats ?
-    // почему не работают анимации?
 }

@@ -1,13 +1,27 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {chatList} from "./chats";
+import ChatList from "./chats";
+import ChatPage from "./chat";
+
 
 class App extends Component {
-    render () {
+    constructor(props) {
+        super(props);
+        this.state = {
+            currentPage: 'chat-list',
+            name: undefined
+        }
+    }
+
+    render() {
         return (
             <>
-                {chatList()}
+                {
+                    this.state.currentPage === 'chat' ?
+                        <ChatPage onClick={(page) => this.setState({currentPage: page})} name={this.state.name}/> :
+                        <ChatList onClick={(page, name) => this.setState({currentPage: page, name: name})}/>
+                }
             </>
         )
     }
@@ -15,8 +29,8 @@ class App extends Component {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <App/>
+    </React.StrictMode>
 );
 
