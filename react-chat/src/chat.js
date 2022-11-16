@@ -1,58 +1,14 @@
 import React from "react";
 import {chats} from './chat_list'
 
-// function chat_page(name) {
-//     const form = document.querySelector('form')
-//     const input = document.querySelector('.form-input')
-//     const message_list = document.querySelector('.message-list')
-//
-//
-//     form.addEventListener('submit', handleSubmit)
-//     form.addEventListener('keypress', handleKeyPress)
-//
-//     function handleSubmit(event) {
-//         event.preventDefault();
-//         if (input.value === "")
-//             return
-//
-//         const message = {
-//             name: myName,
-//             time: new Date().toLocaleTimeString().slice(0, -3),
-//             content: input.value,
-//         }
-//         chatHistory[name].push(message)
-//         document.querySelector('.form-input').value = ""
-//
-//         localStorage.setItem("chats", JSON.stringify(chatHistory))
-//         let localData = JSON.parse(localStorage.getItem("chats"))[name]
-//         let last = localData.length - 1
-//         const templateDiv = `
-//             <div class='message-bubble my-message'>
-//                 <div class='message'>
-//                      <p>${localData[last].content}</p>
-//                       <div class="info">
-//                          <time>${localData[last].time}</time>
-//                         <i class="material-icons">done_all</i>
-//                      </div>
-//                  </div>
-//             </div>`
-//         message_list.innerHTML += templateDiv
-//     }
-//
-//     function handleKeyPress(event) {
-//         if (event.keyCode === 13) {
-//             form.dispatchEvent(new Event('submit'));
-//         }
-//     }
-// }
-
 function MessageItem(props) {
     const message = props.message
     const myName = props.myName
 
     let className = "message-bubble"
-    if (message.name === myName)
+    if (message.name === myName) {
         className += " my-message"
+    }
     let check = message.name === myName ? "done_all" : ""
 
     return (
@@ -85,7 +41,7 @@ function restoreHistory(messages, myName) {
 function getHeader(props) {
     return (
         <header className="site-header">
-            <a href="#" onClick={() => props.onClick('chat-list')} className="logo arrow">
+            <a href="#" /*onClick={() => props.onClick('chat-list')}*/ className="logo arrow">
                 <i className="material-icons icon">arrow_back</i>
             </a>
             <a href="#">
@@ -109,23 +65,79 @@ function getHeader(props) {
     )
 }
 
-function getForm(name, myName) {
-    const chatHistory = JSON.parse(localStorage.getItem("chats"))
-    let messages = chatHistory[name]
+export class GetForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: this.props.name,
+            myName: this.props.myName,
+            messages: JSON.parse(localStorage.getItem("chats"))[this.props.name],
+            index: 4,
+            text: '',
+        }
 
-    return (
-        <form className="form" action="/">
-            <div className="message-list">
-                {restoreHistory(messages, myName)}
-            </div>
-            <div className="input">
-                <input className="form-input" name="message-text" placeholder="Сообщение" type="text"/>
-                <a href="#">
-                    <i className="material-icons icon">attachment</i>
-                </a>
-            </div>
-        </form>
-    )
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    handleChange(event) {
+        this.setState({
+            text: event.target.value
+        })
+    }
+
+    handleSubmit(event) {
+        event.preventDefault()
+
+        if (this.state.text === '') {
+            return
+        }
+
+        let time = new Date();
+        this.setState({
+            index: this.state.index + 1,
+            text: '',
+        })
+
+        let message = {
+            'id': this.state.index,
+            'name': this.state.myName,
+            'time': `${time.getHours()}:${time.getMinutes()}`,
+            'content': this.state.text,
+        }
+
+        this.saveToLocalStorage(message)
+    }
+
+    saveToLocalStorage(message) {
+        this.state.messages.push(message)
+
+        let chats_dict = JSON.parse(localStorage['chats'])
+        chats_dict[this.state.name] = this.state.messages
+        localStorage.setItem("chats", JSON.stringify(chats_dict))
+    }
+
+    render() {
+        return (
+            <form className="form" onSubmit={this.handleSubmit}>
+                <div className="message-list">
+                    {restoreHistory(this.state.messages, this.state.myName)}
+                </div>
+                <div className="input">
+                    <input className="form-input"
+                           name="message-text"
+                           placeholder="Cообщение"
+                           onChange={this.handleChange}
+                           type="text"
+                           value={this.state.text}/>
+                    <a href="#">
+                        <i className="material-icons icon">attachment</i>
+                    </a>
+                </div>
+            </form>
+        )
+    }
+
 }
 
 
@@ -134,10 +146,8 @@ export default function ChatPage(props) {
         localStorage.setItem("chats", JSON.stringify(chats))
     }
 
-    const name = props.name
-    const myName = "Мое имя"
     return <>
         {getHeader(props)}
-        {getForm(name, myName)}
+        <GetForm name={props.name} myName={"Мое имя"}></GetForm>
     </>
 }
