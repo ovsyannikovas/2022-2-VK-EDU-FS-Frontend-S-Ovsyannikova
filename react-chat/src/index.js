@@ -9,7 +9,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPage: 'chat-list',
+            page: 'chat-list',
             name: 'Дженнифер'
         }
     }
@@ -18,9 +18,9 @@ class App extends Component {
         return (
             <>
                 {
-                    // this.state.currentPage === 'chat' ?
-                        <ChatPage /*onClick={(page) => this.setState({currentPage: page})}*/ name={this.state.name}/> //:
-                        // <ChatList onClick={(page, name) => this.setState({currentPage: page, name: name})}/>
+                    this.state.page === 'chat' ?
+                        <ChatPage onClick={(page) => this.setState({page: page})} name={this.state.name}/> :
+                        <ChatList onClick={(page, name) => this.setState({page: page, name: name})}/>
                 }
             </>
         )

@@ -41,7 +41,7 @@ function restoreHistory(messages, myName) {
 function getHeader(props) {
     return (
         <header className="site-header">
-            <a href="#" /*onClick={() => props.onClick('chat-list')}*/ className="logo arrow">
+            <a href="#" onClick={() => props.onClick('chat-list')} className="logo arrow">
                 <i className="material-icons icon">arrow_back</i>
             </a>
             <a href="#">
