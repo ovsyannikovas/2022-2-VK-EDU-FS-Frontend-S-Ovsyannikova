@@ -93,9 +93,9 @@ export class GetForm extends React.Component {
             return
         }
 
-        let time = new Date();
+        let time = new Date()
+        this.state.index++
         this.setState({
-            index: this.state.index + 1,
             text: '',
         })
 
