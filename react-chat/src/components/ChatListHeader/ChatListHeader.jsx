@@ -4,14 +4,14 @@ export default function ChatListHeader() {
     return (
         <header className="site-header-messenger">
             <div className="burger-label">
-                <a className="burger-icon">
+                <button className="burger-icon">
                     <i className="material-icons icon">menu</i>
-                </a>
+                </button>
                 <p className="messenger-label">Messenger</p>
             </div>
-            <a>
+            <button>
                 <i className="material-icons icon">search</i>
-            </a>
+            </button>
         </header>
     )
 }

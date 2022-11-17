@@ -5,7 +5,7 @@ export default function Dialogue(props) {
     const name = props.name
 
     return (
-        <a onClick={() => props.onClick('chat', name)} className="dialogue">
+        <button onClick={() => props.onClick('chat', name)} className="dialogue">
             <i className="material-icons">account_circle</i>
             <div className="dialogue-text">
                 <div className="dialogue-user-text">
@@ -18,6 +18,6 @@ export default function Dialogue(props) {
                     {/*<p class="dialogue-counter">99</p>*/}
                 </div>
             </div>
-        </a>
+        </button>
     )
 }

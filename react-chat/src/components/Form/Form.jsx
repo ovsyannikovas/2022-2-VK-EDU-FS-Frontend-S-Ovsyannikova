@@ -79,9 +79,9 @@ export default class Form extends React.Component {
                            onChange={this.handleChange}
                            type="text"
                            value={this.state.text}/>
-                    <a>
+                    <button>
                         <i className="material-icons icon">attachment</i>
-                    </a>
+                    </button>
                 </div>
             </form>
         )
