@@ -55,8 +55,6 @@ function main() {
 
 
 function chat_page(name) {
-    console.log(name)
-    // document.location.pathname = '/index.html'
     let chatName = document.querySelector('.name')
     chatName.textContent = name
     const myName = "Мое имя"
@@ -73,11 +71,15 @@ function chat_page(name) {
 
     restoreHistory(messages, message_list, myName)
 
+    message_list.scrollTop = message_list.scrollHeight
+
     form.addEventListener('submit', handleSubmit)
     form.addEventListener('keypress', handleKeyPress)
 
     function handleSubmit(event) {
         event.preventDefault();
+        let lastMsg = document.querySelector('.message-bubble:last-child')
+
         if (input.value === "")
             return
 
@@ -92,7 +94,7 @@ function chat_page(name) {
         localStorage.setItem("chats", JSON.stringify(chatHistory))
         let localData = JSON.parse(localStorage.getItem("chats"))[name]
         let last = localData.length - 1
-        const templateDiv =`
+        const templateDiv = `
             <div class='message-bubble my-message'>
                 <div class='message'>
                      <p>${localData[last].content}</p>
@@ -103,6 +105,10 @@ function chat_page(name) {
                  </div>
             </div>`
         message_list.innerHTML += templateDiv
+        lastMsg = document.querySelector('.message-bubble:last-child')
+        lastMsg.style.animation = 'ani 0.5s forwards'
+
+        message_list.scrollTop = message_list.scrollHeight
     }
 
     function handleKeyPress(event) {
@@ -116,7 +122,7 @@ function restoreHistory(messages, message_list, myName) {
     messages.forEach(function (message) {
         let class_name = message.name === myName ? "my-message" : ""
         let check = message.name === myName ? "done_all" : ""
-        const templateDiv =`
+        const templateDiv = `
             <div class='message-bubble ${class_name}'>
                 <div class='message'>
                      <p>${message.content}</p>
