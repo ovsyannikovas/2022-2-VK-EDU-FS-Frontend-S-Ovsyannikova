@@ -209,7 +209,7 @@ header .material-icons {
 .info {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .messenger-label {
@@ -219,7 +219,7 @@ header .material-icons {
 .burger-label {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 
