@@ -3,10 +3,10 @@ import React from "react";
 export default function ChatHeader(props) {
     return (
         <header className="site-header">
-            <a onClick={() => props.props.onClick('chat-list')} className="logo arrow">
+            <a href='\' onClick={() => props.props.onClick('chat-list')} className="logo arrow">
                 <i className="material-icons icon">arrow_back</i>
             </a>
-            <a>
+            <a href='\'>
                 <div className="user-info">
                     <i className="material-icons avatar">account_circle</i>
                     <div className="user-text">
@@ -16,10 +16,10 @@ export default function ChatHeader(props) {
                 </div>
             </a>
             <div className="buttons">
-                <a>
+                <a href='\'>
                     <i className="material-icons icon">search</i>
                 </a>
-                <a>
+                <a href='\'>
                     <i className="material-icons icon">menu</i>
                 </a>
             </div>
