@@ -35,6 +35,6 @@
       "last 1 safari version"
     ]
   },
-  "homepage": ".",
+  "homepage": "https://ovsyannikovas.github.io/react-chat",
   "proxy": "http://localhost:3000"
 }
