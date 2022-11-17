@@ -30,9 +30,9 @@ export default class Form extends React.Component {
         }
 
         let time = new Date()
-        this.state.index++
         this.setState({
             text: '',
+            index: this.state.index + 1
         })
 
         let message = {
@@ -79,7 +79,7 @@ export default class Form extends React.Component {
                            onChange={this.handleChange}
                            type="text"
                            value={this.state.text}/>
-                    <a href="#">
+                    <a>
                         <i className="material-icons icon">attachment</i>
                     </a>
                 </div>
