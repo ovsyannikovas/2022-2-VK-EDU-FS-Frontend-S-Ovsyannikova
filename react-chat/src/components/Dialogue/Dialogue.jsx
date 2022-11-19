@@ -1,4 +1,6 @@
 import React from "react";
+import {DoneAll} from "@mui/icons-material";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 export default function Dialogue(props) {
     const value = props.value
@@ -6,7 +8,7 @@ export default function Dialogue(props) {
 
     return (
         <button onClick={() => props.onClick('chat', name)} className="dialogue">
-            <i className="material-icons">account_circle</i>
+            <AccountCircleIcon className={'ava'}/>
             <div className="dialogue-text">
                 <div className="dialogue-user-text">
                     <p className="dialogue-name">{name}</p>
@@ -14,7 +16,7 @@ export default function Dialogue(props) {
                 </div>
                 <div className="dialogue-nums">
                     <p className="dialogue-time">{value.slice(-1)[0]["time"]}</p>
-                    <i className="material-icons">done_all</i>
+                    <DoneAll/>
                     {/*<p class="dialogue-counter">99</p>*/}
                 </div>
             </div>

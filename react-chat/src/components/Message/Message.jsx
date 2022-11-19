@@ -1,4 +1,5 @@
 import React from "react";
+import {DoneAll} from "@mui/icons-material";
 
 export default function Message(props) {
     const message = props.message
@@ -8,7 +9,6 @@ export default function Message(props) {
     if (message.name === myName) {
         className += " my-message"
     }
-    let check = message.name === myName ? "done_all" : ""
 
     return (
         <div className={className}>
@@ -16,9 +16,14 @@ export default function Message(props) {
                 <p>{message.content}</p>
                 <div className="info">
                     <time>{message.time}</time>
-                    <i className="material-icons">{check}</i>
+                    {checkMark(message.name, myName)}
                 </div>
             </div>
         </div>
     )
+}
+
+function checkMark(name, myName) {
+    if (name === myName)
+        return <DoneAll/>
 }

@@ -87,7 +87,11 @@ header button {
     background: transparent;
 }
 
-header .material-icons {
+header .icon {
+    font-size: 50px !important;
+}
+
+.form .icon {
     font-size: 50px !important;
 }
 
@@ -119,7 +123,7 @@ header .material-icons {
     margin: 0;
 }
 
-.user-info i {
+.avatar {
     margin-right: 35px;
     font-size: 80px !important;
 }
@@ -293,7 +297,7 @@ header .material-icons {
     border-bottom: 1px solid #666666;
 }
 
-.dialogue i:first-child {
+.dialogue .ava {
     margin-right: 40px;
     font-size: 100px;
 }
@@ -386,11 +390,11 @@ header .material-icons {
     }
 }
 
-.input button i{
+.input button .icon{
     font-size: 1.5em;
 }
 
-.input button i:hover {
+.input button .icon:hover {
     animation: rotate 0.7s forwards;
 }
 

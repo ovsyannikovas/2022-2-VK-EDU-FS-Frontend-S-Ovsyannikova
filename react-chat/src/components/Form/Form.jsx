@@ -1,5 +1,6 @@
 import React from "react";
 import Message from '../../components/Message/Message';
+import {Attachment} from "@mui/icons-material";
 
 export default class Form extends React.Component {
     constructor(props) {
@@ -80,7 +81,7 @@ export default class Form extends React.Component {
                            type="text"
                            value={this.state.text}/>
                     <button>
-                        <i className="material-icons icon">attachment</i>
+                        <Attachment className={'icon'}/>
                     </button>
                 </div>
             </form>
