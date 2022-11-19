@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import PageChat from "./pages/PageChat/PageChat";
 import PageChatList from "./pages/PageChatList/PageChatList";
 import {HashRouter as Router, Routes, Route, Link} from 'react-router-dom';
+import PageProfile from "./pages/PageProfile/PageProfile";
 
 export default class App extends Component {
     constructor(props) {
@@ -14,6 +15,7 @@ export default class App extends Component {
 
     render() {
         return (
+            // <PageProfile></PageProfile>
             <Router>
                 <Routes>
                     <Route path='/' element={
