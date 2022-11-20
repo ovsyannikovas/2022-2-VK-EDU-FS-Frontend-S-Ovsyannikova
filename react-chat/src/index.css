@@ -270,6 +270,10 @@ header .icon {
     background: transparent;
 }
 
+.messages a {
+    text-decoration: none;
+}
+
 .dialogue {
     width: 100%;
     padding: 0 30px 0 30px;

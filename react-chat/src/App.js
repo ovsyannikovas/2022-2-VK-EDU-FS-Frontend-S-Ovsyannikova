@@ -15,14 +15,16 @@ export default class App extends Component {
 
     render() {
         return (
-            // <PageProfile></PageProfile>
             <Router>
                 <Routes>
                     <Route path='/' element={
-                        <PageChatList onClick={(page, name) => this.setState({page: <Link to='/chat/id'/>, name: name})}/>
+                        <PageChatList onClick={(name) => this.setState({name: name})}/>
                     }></Route>
                     <Route path='/chat/id' element={
-                        <PageChat onClick={(page) => this.setState({page: <Link to='/chat-list'/>})} name={this.state.name}/>
+                        <PageChat name={this.state.name}/>
+                    }></Route>
+                    <Route path='/profile' element={
+                        <PageProfile/>
                     }></Route>
                 </Routes>
             </Router>

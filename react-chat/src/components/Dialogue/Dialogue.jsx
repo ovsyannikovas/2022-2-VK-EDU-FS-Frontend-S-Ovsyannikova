@@ -7,7 +7,7 @@ export default function Dialogue(props) {
     const name = props.name
 
     return (
-        <button onClick={() => props.onClick('chat', name)} className="dialogue">
+        <button onClick={() => props.onClick(name)} className="dialogue">
             <AccountCircleIcon className={'ava'}/>
             <div className="dialogue-text">
                 <div className="dialogue-user-text">

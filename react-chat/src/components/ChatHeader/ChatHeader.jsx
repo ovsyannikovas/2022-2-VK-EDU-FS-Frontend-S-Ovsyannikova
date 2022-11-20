@@ -3,13 +3,16 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {Link} from "react-router-dom";
 
 export default function ChatHeader(props) {
     return (
         <header className="site-header">
-            <button onClick={() => props.props.onClick('chat-list')} className="logo arrow">
-                <ArrowBackIcon className={'icon'}/>
-            </button>
+            <Link to='/'>
+                <button className="logo arrow">
+                    <ArrowBackIcon className={'icon'}/>
+                </button>
+            </Link>
             <button>
                 <div className="user-info">
                     <AccountCircleIcon className={'avatar'}/>

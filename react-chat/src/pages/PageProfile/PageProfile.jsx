@@ -3,7 +3,7 @@ import PageProfileHeader from "../../components/PageProfileHeader/PageProfileHea
 import PageProfileBody from "../../components/PageProfileBody/PageProfileBody";
 
 
-export default function PageProfile(props) {
+export default function PageProfile() {
     return <>
         <PageProfileHeader></PageProfileHeader>
         <PageProfileBody></PageProfileBody>
