@@ -61,9 +61,26 @@ input[type=submit] {
     color: #757575;
 }
 
+.input-message .icon {
+    color: #757575;
+}
+
 .input-field {
     display: flex;
     flex-direction: row;
+    background-color: #fff;
+}
+
+.input-message input {
+    outline: none;
+    width: 90vw;
+    height: 160px;
+    padding-left: 32px;
+    font-size: 32px;
+    border: 0;
+}
+
+.input-message {
     background-color: #fff;
 }
 
@@ -394,11 +411,11 @@ header .icon {
     }
 }
 
-.input button .icon{
+.input-message button .icon {
     font-size: 1.5em;
 }
 
-.input button .icon:hover {
+.input-message button .icon:hover {
     animation: rotate 0.7s forwards;
 }
 

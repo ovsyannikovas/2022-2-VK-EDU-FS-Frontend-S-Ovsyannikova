@@ -42,6 +42,6 @@ export let chats = {
 }
 
 export let usernames = {
-    'Дженнифер': 'Jennifer',
-    'Сара': 'Sarah'
+    'Дженнифер': 'jennifer',
+    'Сара': 'sarah'
 }
