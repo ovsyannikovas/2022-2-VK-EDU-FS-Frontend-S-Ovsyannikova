@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/2022-2-VK-EDU-FS-Frontend-S-Ovsyannikova/precache-manifest.006459db790e76b7443cb08c1ccf5800.js"
+  "/2022-2-VK-EDU-FS-Frontend-S-Ovsyannikova/precache-manifest.a27f873fc49ecd824e18eb8060c2699f.js"
 );
 
 workbox.clientsClaim();
