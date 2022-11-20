@@ -18,6 +18,12 @@ body {
     text-decoration: none;
 }
 
+body button {
+    outline: none;
+    border: 0;
+    background: transparent;
+}
+
 .form {
     width: 100%;
     display: inline-block;
@@ -47,13 +53,12 @@ input {
     border: 0;
 }
 
-.input a {
+.input button {
     width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #757575;
-    text-decoration: none;
 }
 
 .input {
@@ -75,17 +80,18 @@ header {
     color: #fcf9fd;
 }
 
-header a {
+header button {
     color: #ffffff;
-    text-decoration: none;
+    outline: none;
+    border: 0;
+    background: transparent;
 }
 
-header a:hover {
-    color: #757575;
-    transition: color 0.7s;
+header .icon {
+    font-size: 50px !important;
 }
 
-header .material-icons {
+.form .icon {
     font-size: 50px !important;
 }
 
@@ -94,10 +100,6 @@ header .material-icons {
     'wght' 400,
     'GRAD' 0,
     'opsz' 48
-}
-
-.material-icons {
-
 }
 
 .user-info {
@@ -121,7 +123,7 @@ header .material-icons {
     margin: 0;
 }
 
-.user-info i {
+.avatar {
     margin-right: 35px;
     font-size: 80px !important;
 }
@@ -229,7 +231,7 @@ header .material-icons {
 .info {
     display: flex;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .info i {
@@ -243,7 +245,7 @@ header .material-icons {
 .burger-label {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -257,11 +259,15 @@ header .material-icons {
 }
 
 .messages {
+    /*padding: 0 30px 0 30px;*/
     height: calc(100vh - 160px);
 }
 
-.messages a {
-    text-decoration: none;
+.messages button {
+    color: black;
+    outline: none;
+    border: 0;
+    background: transparent;
 }
 
 .dialogue {
@@ -288,10 +294,10 @@ header .material-icons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #666666;
 }
 
-.dialogue i:first-child {
+.dialogue .ava {
     margin-right: 40px;
     font-size: 100px;
 }
@@ -319,25 +325,18 @@ header .material-icons {
     color: #757575;
     margin-top: 10px;
     font-size: 0.8em;
+    justify-content: flex-start;
 }
 
 .dialogue-user-text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     margin: 10px 0 10px 0;
-}
-
-.dialogue-name {
 }
 
 .dialogue-user-text p {
     margin: 15px 0 10px 0;
-}
-
-.messages a {
-    text-decoration: none;
-    color: black;
 }
 
 .new-message-btn {
@@ -347,11 +346,12 @@ header .material-icons {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     background: #ffd54f;
     color: #756124;
-    width: 100px;
-    height: 100px;
+    /*box-shadow: ...*/
 }
 
 .pulse {
@@ -390,11 +390,11 @@ header .material-icons {
     }
 }
 
-.input a i{
+.input button .icon{
     font-size: 1.5em;
 }
 
-.input a i:hover {
+.input button .icon:hover {
     animation: rotate 0.7s forwards;
 }
 
