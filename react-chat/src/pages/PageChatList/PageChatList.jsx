@@ -11,6 +11,5 @@ export default function PageChatList(props) {
     return <>
         <ChatListHeader></ChatListHeader>
         <ChatListBody props={props}></ChatListBody>
-        {/*{getBody(props)}*/}
     </>
 }

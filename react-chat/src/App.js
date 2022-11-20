@@ -20,7 +20,7 @@ export default class App extends Component {
                     <Route path='/' element={
                         <PageChatList onClick={(name) => this.setState({name: name})}/>
                     }></Route>
-                    <Route path='/chat/id' element={
+                    <Route path='/chat/:username' element={
                         <PageChat name={this.state.name}/>
                     }></Route>
                     <Route path='/profile' element={
