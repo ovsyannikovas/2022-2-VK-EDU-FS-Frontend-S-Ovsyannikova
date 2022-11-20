@@ -1,14 +1,18 @@
 import React from "react";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import SearchIcon from '@mui/icons-material/Search';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function ChatHeader(props) {
     return (
         <header className="site-header">
             <button onClick={() => props.props.onClick('chat-list')} className="logo arrow">
-                <i className="material-icons icon">arrow_back</i>
+                <ArrowBackIcon className={'icon'}/>
             </button>
             <button>
                 <div className="user-info">
-                    <i className="material-icons avatar">account_circle</i>
+                    <AccountCircleIcon className={'avatar'}/>
                     <div className="user-text">
                         <p className="name">{props.props.name}</p>
                         <p className="time">была 2 часа назад</p>
@@ -17,10 +21,10 @@ export default function ChatHeader(props) {
             </button>
             <div className="buttons">
                 <button>
-                    <i className="material-icons icon">search</i>
+                    <SearchIcon className={'icon'}/>
                 </button>
                 <button>
-                    <i className="material-icons icon">menu</i>
+                    <MenuIcon className={'icon'}/>
                 </button>
             </div>
         </header>
