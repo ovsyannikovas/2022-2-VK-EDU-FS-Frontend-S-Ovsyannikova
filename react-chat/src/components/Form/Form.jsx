@@ -73,7 +73,7 @@ export default class Form extends React.Component {
                 <div className="message-list">
                     {this.restoreHistory(this.state.messages, this.state.myName)}
                 </div>
-                <div className="input">
+                <div className="input-message">
                     <input className="form-input"
                            name="message-text"
                            placeholder="Cообщение"

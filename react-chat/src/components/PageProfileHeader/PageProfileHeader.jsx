@@ -1,21 +1,19 @@
 import React from "react";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
 import {Link} from "react-router-dom";
 
-export default function ChatListHeader() {
+export default function PageProfileHeader () {
     return (
         <header className="site-header-messenger">
             <div className="burger-label">
-                <Link to='/profile'>
+                <Link to='/'>
                     <button className="burger-icon">
-                        <MenuIcon className={'icon'}/>
+                        <i className="material-icons icon">arrow_back</i>
                     </button>
                 </Link>
-                <p className="messenger-label">Messenger</p>
+                <p className="messenger-label">Edit profile</p>
             </div>
             <button>
-                <SearchIcon className={'icon'}/>
+                <i className="material-icons icon">check</i>
             </button>
         </header>
     )
