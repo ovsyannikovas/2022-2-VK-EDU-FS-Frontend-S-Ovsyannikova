@@ -5,11 +5,16 @@ import {Attachment} from "@mui/icons-material";
 export default class Form extends React.Component {
     constructor(props) {
         super(props);
+        let message_list
+        if (this.props.name === 'Общий чат')
+            message_list = getFromPooling()
+        else
+            message_list = JSON.parse(localStorage.getItem("chats"))[this.props.name]
         this.state = {
             name: this.props.name,
             myName: this.props.myName,
-            messages: JSON.parse(localStorage.getItem("chats"))[this.props.name],
-            index: JSON.parse(localStorage.getItem("chats"))[this.props.name].slice(-1)[0]['id'],
+            messages: message_list,
+            index: message_list.slice(-1)[0]['_id'],
             text: '',
         }
 
@@ -88,4 +93,8 @@ export default class Form extends React.Component {
         )
     }
 
+}
+
+function getFromPooling() {
+    pass
 }
