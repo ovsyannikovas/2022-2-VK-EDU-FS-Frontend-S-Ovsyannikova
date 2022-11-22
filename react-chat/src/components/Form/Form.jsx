@@ -1,14 +1,13 @@
 import React from "react";
 import Message from '../../components/Message/Message';
 import {Attachment} from "@mui/icons-material";
+import {getMessage} from "@testing-library/jest-dom/dist/utils";
 
 export default class Form extends React.Component {
     constructor(props) {
         super(props);
-        let message_list
-        if (this.props.name === 'Общий чат')
-            message_list = getFromPooling()
-        else
+        let message_list = []
+        if (this.props.name !== 'Общий чат')
             message_list = JSON.parse(localStorage.getItem("chats"))[this.props.name]
         this.state = {
             name: this.props.name,
@@ -59,6 +58,18 @@ export default class Form extends React.Component {
         localStorage.setItem("chats", JSON.stringify(chats_dict))
     }
 
+    getMessages = () => {
+        const API_URL = 'https://localhost:9000/messages'
+        fetch(`${API_URL}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                this.setState({
+                    messages: data.messages
+                });
+            });
+    };
+
     restoreHistory(messages, myName) {
         return (
             <>
@@ -92,9 +103,4 @@ export default class Form extends React.Component {
             </form>
         )
     }
-
-}
-
-function getFromPooling() {
-    pass
 }
