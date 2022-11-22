@@ -37,10 +37,10 @@ export default class Form extends React.Component {
         })
 
         let message = {
-            'id': this.state.index,
-            'name': this.state.myName,
-            'time': `${time.getHours()}:${time.getMinutes()}`,
-            'content': this.state.text,
+            '_id': this.state.index,
+            'author': this.state.myName,
+            'timestamp': `${time.getHours()}:${time.getMinutes()}`,
+            'text': this.state.text,
         }
 
         this.saveToLocalStorage(message)
@@ -59,7 +59,7 @@ export default class Form extends React.Component {
             <>
                 {messages.map((message) =>
                     <Message
-                        key={message.id}
+                        key={message._id}
                         message={message}
                         myName={myName}
                     />
