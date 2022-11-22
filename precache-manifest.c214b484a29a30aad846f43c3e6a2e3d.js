@@ -12,15 +12,15 @@ self.__precacheManifest = [
     "url": "/2022-2-VK-EDU-FS-Frontend-S-Ovsyannikova/static/js/runtime~main.6ef2c08d.js"
   },
   {
-    "revision": "83ae042c41ac472062ed",
-    "url": "/2022-2-VK-EDU-FS-Frontend-S-Ovsyannikova/static/js/2.92616eb8.chunk.js"
+    "revision": "2e1cdf75dcbb8365fb2e",
+    "url": "/2022-2-VK-EDU-FS-Frontend-S-Ovsyannikova/static/js/2.db3aae1d.chunk.js"
   },
   {
     "revision": "43f285546e6dde082ac658425360f81d",
     "url": "/2022-2-VK-EDU-FS-Frontend-S-Ovsyannikova/static/media/photo.43f28554.jpg"
   },
   {
-    "revision": "c958b9a19459f96319cd5ee22e730892",
+    "revision": "5054165481aa39902836fcfd38a3228f",
     "url": "/2022-2-VK-EDU-FS-Frontend-S-Ovsyannikova/index.html"
   }
 ];
