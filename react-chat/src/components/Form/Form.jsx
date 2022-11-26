@@ -31,7 +31,6 @@ export default class Form extends React.Component {
         fetch(API_URL)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data !== undefined) {
                     this.setState({
                         messages: data
@@ -59,14 +58,25 @@ export default class Form extends React.Component {
             index: this.state.index + 1
         })
 
-        let message = {
-            '_id': this.state.index,
-            'author': this.state.myName,
-            'timestamp': `${time}`,
-            'text': this.state.text,
-        }
+        if (this.state.name === 'Общий чат') {
+            let message = fetch('https://tt-front.vercel.app/message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    'author': this.state.myName,
+                    'text': this.state.text,
+                }),
+            })
+        } else {
+            let message = {
+                '_id': this.state.index,
+                'author': this.state.myName,
+                'timestamp': `${time}`,
+                'text': this.state.text,
+            }
 
-        this.saveToLocalStorage(message)
+            this.saveToLocalStorage(message)
+        }
     }
 
     saveToLocalStorage(message) {
@@ -78,6 +88,8 @@ export default class Form extends React.Component {
     }
 
     restoreHistory(messages, myName) {
+        if (this.state.name === 'Общий чат')
+            this.componentDidMount()
         return (
             <>
                 {messages.map((message) =>
