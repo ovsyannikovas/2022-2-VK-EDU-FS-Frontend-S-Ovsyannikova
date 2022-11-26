@@ -59,7 +59,7 @@ export default class Form extends React.Component {
         })
 
         if (this.state.name === 'Общий чат') {
-            let message = fetch('https://tt-front.vercel.app/message', {
+            fetch('https://tt-front.vercel.app/message', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
