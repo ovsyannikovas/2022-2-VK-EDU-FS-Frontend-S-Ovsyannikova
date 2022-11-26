@@ -354,6 +354,7 @@ header .icon {
     flex-direction: column;
     justify-content: flex-start;
     margin: 10px 0 10px 0;
+    text-align: left;
 }
 
 .dialogue-user-text p {

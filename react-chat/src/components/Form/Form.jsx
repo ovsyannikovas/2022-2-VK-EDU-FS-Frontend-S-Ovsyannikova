@@ -5,17 +5,39 @@ import {Attachment} from "@mui/icons-material";
 export default class Form extends React.Component {
     constructor(props) {
         super(props);
+        let message_list = JSON.parse(localStorage.getItem("chats"))[this.props.name]
+        // if (this.props.name !== 'Общий чат')
+        //     message_list = JSON.parse(localStorage.getItem("chats"))[this.props.name]
         this.state = {
             name: this.props.name,
             myName: this.props.myName,
-            messages: JSON.parse(localStorage.getItem("chats"))[this.props.name],
-            index: JSON.parse(localStorage.getItem("chats"))[this.props.name].slice(-1)[0]['id'],
+            messages: message_list,
+            index: message_list.slice(-1)[0]['_id'],
             text: '',
         }
 
+        this.componentDidMount = this.componentDidMount.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+
+    componentDidMount() {
+        if (this.state.name === 'Общий чат')
+            this.getMessages()
+    }
+
+    getMessages = () => {
+        const API_URL = 'https://tt-front.vercel.app/messages'
+        fetch(API_URL)
+            .then(res => res.json())
+            .then(data => {
+                if (data !== undefined) {
+                    this.setState({
+                        messages: data
+                    });
+                }
+            });
+    };
 
     handleChange(event) {
         this.setState({
@@ -36,14 +58,25 @@ export default class Form extends React.Component {
             index: this.state.index + 1
         })
 
-        let message = {
-            'id': this.state.index,
-            'name': this.state.myName,
-            'time': `${time.getHours()}:${time.getMinutes()}`,
-            'content': this.state.text,
-        }
+        if (this.state.name === 'Общий чат') {
+            fetch('https://tt-front.vercel.app/message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    'author': this.state.myName,
+                    'text': this.state.text,
+                }),
+            })
+        } else {
+            let message = {
+                '_id': this.state.index,
+                'author': this.state.myName,
+                'timestamp': `${time}`,
+                'text': this.state.text,
+            }
 
-        this.saveToLocalStorage(message)
+            this.saveToLocalStorage(message)
+        }
     }
 
     saveToLocalStorage(message) {
@@ -55,11 +88,13 @@ export default class Form extends React.Component {
     }
 
     restoreHistory(messages, myName) {
+        if (this.state.name === 'Общий чат')
+            this.componentDidMount()
         return (
             <>
                 {messages.map((message) =>
                     <Message
-                        key={message.id}
+                        key={message._id}
                         message={message}
                         myName={myName}
                     />
@@ -87,5 +122,4 @@ export default class Form extends React.Component {
             </form>
         )
     }
-
 }

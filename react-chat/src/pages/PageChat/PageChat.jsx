@@ -10,7 +10,7 @@ export default function PageChat(props) {
 
     return (<>
         <ChatHeader props={props}></ChatHeader>
-        <Form name={props.name} myName={"Мое имя"}></Form>
+        <Form name={props.name} myName={"sveta"}></Form>
     </>)
 }
 

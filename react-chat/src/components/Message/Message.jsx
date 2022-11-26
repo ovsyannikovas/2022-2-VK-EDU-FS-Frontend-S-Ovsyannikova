@@ -6,17 +6,17 @@ export default function Message(props) {
     const myName = props.myName
 
     let className = "message-bubble"
-    if (message.name === myName) {
+    if (message.author === myName) {
         className += " my-message"
     }
 
     return (
         <div className={className}>
             <div className='message'>
-                <p>{message.content}</p>
+                <p>{message.text}</p>
                 <div className="info">
-                    <time>{message.time}</time>
-                    {checkMark(message.name, myName)}
+                    <time>{message.timestamp}</time>
+                    {checkMark(message.author, myName)}
                 </div>
             </div>
         </div>
